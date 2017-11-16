@@ -33,6 +33,11 @@ LOCAL_SHARED_LIBRARIES := \
 	android.hardware.camera.device@3.2 \
 	android.hidl.manager@1.0
 
+ifeq ($(TARGET_USES_QCOM_BSP),true)
+LOCAL_SHARED_LIBRARIES += \
+    vendor.qti.hardware.camera.device@1.0
+endif
+
 LOCAL_MODULE:= cameraserver
 LOCAL_32_BIT_ONLY := true
 

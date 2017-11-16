@@ -24,7 +24,12 @@ LOCAL_C_INCLUDES := \
 	$(TOP)/frameworks/av/media/libstagefright/rtsp                \
 	$(TOP)/frameworks/av/media/libstagefright/timedtext           \
 	$(TOP)/frameworks/av/media/libmediaplayerservice              \
-	$(TOP)/frameworks/native/include/media/openmax
+	$(TOP)/frameworks/native/include/media/openmax                \
+	$(TOP)/frameworks/av/media/libavextensions
+
+ifeq ($(BOARD_USES_QCOM_HARDWARE),true)
+    LOCAL_CFLAGS += -DQCOM_HARDWARE
+endif
 
 LOCAL_CFLAGS += -Werror -Wall
 
@@ -39,6 +44,7 @@ LOCAL_SHARED_LIBRARIES :=       \
     libgui                      \
     libmedia                    \
     libmediadrm                 \
+    libcrypto                   \
 
 LOCAL_MODULE:= libstagefright_nuplayer
 
